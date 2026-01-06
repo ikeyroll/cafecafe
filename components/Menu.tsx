@@ -68,14 +68,14 @@ const Menu: React.FC = () => {
         </div>
 
         {/* Category Navigation */}
-        <div className="flex flex-wrap justify-center gap-4 md:gap-12 mb-16 border-b border-gray-300 pb-1">
+        <div className="flex flex-nowrap justify-center gap-1 md:gap-12 mb-16 border-b border-gray-300 pb-1 overflow-x-auto scrollbar-hide">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`pb-4 px-4 font-medium transition-all duration-300 text-lg tracking-wide relative ${
+              className={`pb-3 md:pb-4 px-1.5 md:px-4 font-medium transition-all duration-300 text-xs md:text-lg tracking-normal md:tracking-wide relative whitespace-nowrap ${
                 activeCategory === category
-                  ? 'text-kopitiam-green scale-110'
+                  ? 'text-kopitiam-green scale-105 md:scale-110'
                   : 'text-gray-400 hover:text-kopitiam-brown'
               }`}
             >
@@ -88,39 +88,39 @@ const Menu: React.FC = () => {
         </div>
 
         {/* Menu Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-8 gap-y-8 md:gap-y-12">
           {filteredItems.map((item) => (
             <div 
               key={item.id} 
-              className="group bg-white rounded-2xl p-5 hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:-translate-y-2"
+              className="group bg-white rounded-2xl p-3 md:p-5 hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:-translate-y-2"
             >
-              <div className="relative aspect-[4/3] mb-6 overflow-hidden rounded-xl bg-gray-100">
+              <div className="relative aspect-[4/3] mb-3 md:mb-6 overflow-hidden rounded-xl bg-gray-100">
                 <img 
                   src={item.image} 
                   alt={item.name} 
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100"
                 />
                 {item.popular && (
-                  <div className="absolute top-3 left-3 bg-kopitiam-gold text-white px-3 py-1 rounded-full shadow-lg">
-                    <span className="text-[10px] font-bold tracking-widest uppercase">Popular</span>
+                  <div className="absolute top-2 left-2 md:top-3 md:left-3 bg-kopitiam-gold text-white px-2 md:px-3 py-0.5 md:py-1 rounded-full shadow-lg">
+                    <span className="text-[8px] md:text-[10px] font-bold tracking-widest uppercase">Popular</span>
                   </div>
                 )}
               </div>
               
-              <div className="flex justify-between items-start mb-3">
-                <h3 className="font-serif text-xl text-kopitiam-brown leading-tight group-hover:text-kopitiam-gold transition-colors">
+              <div className="flex justify-between items-start mb-2 md:mb-3">
+                <h3 className="font-serif text-sm md:text-xl text-kopitiam-brown leading-tight group-hover:text-kopitiam-gold transition-colors">
                   {item.name}
                 </h3>
-                <span className="font-sans font-bold text-kopitiam-green text-lg whitespace-nowrap bg-kopitiam-green/5 px-2 py-1 rounded-lg">
-                  <span className="text-xs align-top mr-0.5">RM</span>{item.price.toFixed(2)}
+                <span className="font-sans font-bold text-kopitiam-green text-sm md:text-lg whitespace-nowrap bg-kopitiam-green/5 px-1.5 md:px-2 py-0.5 md:py-1 rounded-lg">
+                  <span className="text-[10px] md:text-xs align-top mr-0.5">RM</span>{item.price.toFixed(2)}
                 </span>
               </div>
               
-              <p className="text-gray-500 text-sm leading-relaxed line-clamp-2 font-light mb-4">
+              <p className="text-gray-500 text-xs md:text-sm leading-relaxed line-clamp-2 font-light mb-2 md:mb-4">
                 {item.description}
               </p>
               
-              <button className="w-full py-2 border border-gray-200 rounded-lg text-xs font-bold uppercase tracking-widest text-gray-400 group-hover:border-kopitiam-brown group-hover:text-kopitiam-brown transition-all">
+              <button className="w-full py-1.5 md:py-2 border border-gray-200 rounded-lg text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-400 group-hover:border-kopitiam-brown group-hover:text-kopitiam-brown transition-all">
                 Add to Order
               </button>
             </div>
